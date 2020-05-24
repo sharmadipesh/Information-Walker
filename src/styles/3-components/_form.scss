@@ -1,0 +1,10 @@
+.form-control {
+    background-color: #fff;
+    border: 1px solid #f6eedf;
+    border-radius: 2px;
+
+    &:focus, &:active, &:hover {
+        background-color: #fff;
+        border: 1px solid #f6eedf;
+    }
+}
