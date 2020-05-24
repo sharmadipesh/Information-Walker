@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {reduxSetupChecker} from 'redux/actions/Steps';
 
 class MainLayout extends Component {
+
+    componentDidMount = () =>{
+        this.props.reduxSetupChecker();
+    }
+
     render() {
         return (
             <div>
@@ -10,4 +17,12 @@ class MainLayout extends Component {
     }
 }
 
-export default MainLayout;
+// export default MainLayout;
+function mapStateToProps(state) {
+	return {};
+}
+
+export default connect(
+	mapStateToProps,
+	{ reduxSetupChecker }
+)(MainLayout);
