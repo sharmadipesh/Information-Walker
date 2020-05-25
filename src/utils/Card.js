@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Constants from 'config/constants';
+import Constants from 'config/Constants';
 
 export default class Card extends React.Component {
     render() {

@@ -24,13 +24,15 @@ const createStoreWithMiddleware = applyMiddleware(
 class App extends Component {
     render() {
         return (
-            <Provider store={store}>
-                <Router>
-                    <ScrollToTop>
-                        <Route path={'/'} component={MainLayout} />                
-                    </ScrollToTop>
-                </Router>
-            </Provider>
+            <div className="container-fluid">
+                <Provider store={store}>
+                    <Router>
+                        <ScrollToTop>
+                            <Route path={'/'} component={MainLayout} />                
+                        </ScrollToTop>
+                    </Router>
+                </Provider>
+            </div>
         );
     }
 }
