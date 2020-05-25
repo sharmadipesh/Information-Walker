@@ -8,19 +8,24 @@ import { connect } from 'react-redux';
 class StepThree extends Component {
 
     state={
-        pictures: []
+        pictures: [],
+        pictureBase64:[]
     }
 
     onDrop = (pictureFiles, pictureDataURLs)=> {
-        console.log(pictureFiles);
         this.setState({
-            pictures: pictureFiles
+            pictures: pictureFiles,
+            pictureBase64:pictureDataURLs
         });
     }
 
     imageHandler= () => {
         if(this.state.pictures.length===1){
-            this.props.saveUserImage(this.state.pictures,()=>{
+            let data = {
+                pictures:this.state.pictures,
+                base64:this.state.pictureBase64
+            }
+            this.props.saveUserImage(data,()=>{
                 this.props.history.push(Routes.Finish);
             });
         }else if(this.state.pictures.length>1){
