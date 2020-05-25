@@ -49,3 +49,45 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none; 
     margin: 0; 
 }
+
+
+.file-uploader-container{
+    position: relative;
+}
+
+.csv-input {
+    color: transparent;
+    position: absolute;
+    left: -185px;
+    top: -22px;
+    outline: 0;
+    // padding: 20px;
+}
+.csv-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.csv-input::before {
+    content: 'Select CSV some files';
+    color: #fff;
+    display: inline-block;
+    background-color: #C7222A;
+    border: 1px solid #C7222A;
+    border-radius: 3px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: #C7222A;
+    padding: 10px;
+    font-size: 16px
+}
+.csv-input:hover::before {
+    border-color: black
+  }
+  .csv-input:active {
+    outline: 0;
+}
+.csv-input:active::before {
+    background-color: #C7222A;
+}

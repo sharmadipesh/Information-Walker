@@ -16,7 +16,9 @@ class StepTwo extends Component {
 
     businessDetailsHandler = (values) => {
         console.log("businessDetailsHandler ",values);
-        this.props.setBusinessDetails(values);
+        this.props.setBusinessDetails(values,()=>{
+            this.props.history.push(Routes.StepThree);
+        });
     }
 
     renderForm = ({
