@@ -5,17 +5,26 @@ import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import idx from 'idx';
 import {setBusinessDetails} from 'redux/actions/Steps';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 
 
-// const validationSchema = Yup.object().shape({
-    
-// });
+const validationSchema = Yup.object().shape({
+    bathroom: Yup.number()
+      .required('Bathroom is required')
+      .positive()
+      .nullable(),
+    bedroom: Yup.number()
+      .required('Bedroom is required')
+      .positive()
+      .nullable(),
+    address: Yup.string()
+      .required('Address is required')
+      .nullable(),
+  });
 
 class StepTwo extends Component {
 
     businessDetailsHandler = (values) => {
-        console.log("businessDetailsHandler ",values);
         this.props.setBusinessDetails(values,()=>{
             this.props.history.push(Routes.StepThree);
         });
@@ -36,13 +45,33 @@ class StepTwo extends Component {
                     <div className="col-md-6">
                         <div className="form-group">
                             <label className="form-label">Address</label>
-                            <input name="address" value={values.address} onChange={handleChange} type="text" className="form-control"  placeholder="Address"/>
+                            <input name="address" value={values.address} onChange={handleChange} type="text" 
+                            // className="form-control"  
+                            className={`form-control 
+                                ${errors.address && touched.address && 'is-invalid'}`}
+                            placeholder="Address"/>
+                            <div className="invalid-feedback d-block">
+                                {errors.address && touched.address && errors.address}
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="form-group">
                             <label className="form-label">Bedroom</label>
-                            <input name="bedroom" value={values.bedroom} onChange={handleChange} type="number" className="form-control"  placeholder="Bedroom"/>
+                            <input name="bedroom" value={values.bedroom} 
+                            // onChange={handleChange} 
+                            onChange={async e => {
+                                if (e.target.value.length <= 10) {
+                                    await handleChange(e);
+                                }
+                            }}
+                            type="number" 
+                            className={`form-control 
+                                ${errors.bedroom && touched.bedroom && 'is-invalid'}`}
+                            placeholder="Bedroom"/>
+                            <div className="invalid-feedback d-block">
+                                {errors.bedroom && touched.bedroom && errors.bedroom}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +79,20 @@ class StepTwo extends Component {
                     <div className="col-md-6">
                         <div className="form-group">
                             <label className="form-label">Bathroom</label>
-                            <input name="bathroom" value={values.bathroom} onChange={handleChange} type="number" className="form-control"  placeholder="Bathroom"/>
+                            <input name="bathroom" value={values.bathroom} 
+                            // onChange={handleChange} 
+                            onChange={async e => {
+                                if (e.target.value.length <= 5) {
+                                    await handleChange(e);
+                                }
+                            }}
+                            type="number" 
+                            className={`form-control 
+                                ${errors.bathroom && touched.bathroom && 'is-invalid'}`}
+                            placeholder="Bathroom"/>
+                            <div className="invalid-feedback d-block">
+                                {errors.bathroom && touched.bathroom && errors.bathroom}
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-6">
@@ -81,7 +123,7 @@ class StepTwo extends Component {
                         }}
                         onSubmit={this.businessDetailsHandler}
                         render={this.renderForm}
-                        // validationSchema={validationSchema}
+                        validationSchema={validationSchema}
                     />
                 </Card>
             </div>

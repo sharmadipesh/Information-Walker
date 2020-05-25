@@ -35,7 +35,7 @@ class StepOne extends Component {
                     >
                         Add from Scratch
                     </button>
-                    {/* <button type="button" class="btn">Upload as CSV </button> */}
+                    {/* <button type="button" className="btn">Upload as CSV </button> */}
                     <div>
                         <CSVReader
                             cssClass="file-uploader-container"
