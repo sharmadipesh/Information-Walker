@@ -1,1 +1,2 @@
 export const REDUX_SETUP = 'REDUX_SETUP';
+export const SAVE_BUSINESS_STEP = 'SAVE_BUSINESS_STEP';
