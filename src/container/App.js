@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from 'redux/reducers'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import MainLayout from 'container/MainLayout';
+import ScrollToTop from 'utils/ScrollToTop';
 
 const createStoreWithMiddleware = applyMiddleware(
     reduxThunk,
@@ -23,14 +24,12 @@ const createStoreWithMiddleware = applyMiddleware(
 class App extends Component {
     render() {
         return (
-            // <div>
-                // Hello Information
-            // </div>
             <Provider store={store}>
-				<Router>
-                    <Route path={'/'} component={MainLayout} />                
+                <Router>
+                    <ScrollToTop>
+                        <Route path={'/'} component={MainLayout} />                
+                    </ScrollToTop>
                 </Router>
-
             </Provider>
         );
     }

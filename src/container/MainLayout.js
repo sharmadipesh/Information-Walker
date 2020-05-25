@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {reduxSetupChecker} from 'redux/actions/Steps';
+import { Route, Switch } from 'react-router-dom';
+import Routes from 'config/Routes';
+import StepOne from 'views/StepOne';
 
 class MainLayout extends Component {
 
@@ -11,7 +14,10 @@ class MainLayout extends Component {
     render() {
         return (
             <div>
-                Main Layout
+                {/* Main Layout */}
+                <Switch>
+                    <Route exact  {...this.props} path={Routes.LandingPage} component={StepOne} />
+                </Switch>
             </div>
         );
     }
