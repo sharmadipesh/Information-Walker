@@ -1,0 +1,26 @@
+.rc-steps-item-process{
+    .rc-steps-item-icon{
+        background: #C7222A!important;
+        border-color: #C7222A!important;
+    }
+}
+
+.rc-steps-item-finish{
+    .rc-steps-item-icon{
+        border-color: #C7222A!important;
+        .rc-steps-icon{
+            color: #C7222A!important;
+        }
+    }
+    .rc-steps-item-title:after{
+        background-color: #C7222A!important;
+    }
+}
+
+.rc-steps-item-title:after{
+    height: 2px!important;
+}
+
+.rc-steps-item-icon{
+    font-family: $lato-semibold!important;
+}

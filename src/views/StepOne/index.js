@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import Card from 'utils/Card';
+import Routes from 'config/Routes';
 
 class StepOne extends Component {
     render() {
         return (
             <div>
-                <div className="row">
-                    <div className="col-md-3" />
-                    <div className="col-md-6">
-                        <Card className="p-20">
-                            Step One
-                        </Card>
-                    </div>
-                    <div className="col-md-3" />
-                </div>
+                <Card className="p-30 d-flex align-items-center justify-content-between">
+                    <button 
+                        type="button" 
+                        className="btn"
+                        onClick={()=>this.props.history.push(Routes.StepTwo)}
+                    >
+                        Add from Scratch
+                    </button>
+                    <button type="button" class="btn">Upload as CSV </button>
+                </Card>
             </div>
         );
     }
