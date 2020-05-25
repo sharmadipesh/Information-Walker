@@ -19,9 +19,15 @@ class StepThree extends Component {
     }
 
     imageHandler= () => {
-        this.props.saveUserImage(this.state.pictures,()=>{
-            this.props.history.push(Routes.Finish);
-        });
+        if(this.state.pictures.length===1){
+            this.props.saveUserImage(this.state.pictures,()=>{
+                this.props.history.push(Routes.Finish);
+            });
+        }else if(this.state.pictures.length>1){
+            alert("Select only one image :/");
+        }else{
+            alert("Select image :/");
+        }
     }
 
     render() {
