@@ -25,7 +25,16 @@ const validationSchema = Yup.object().shape({
 class StepTwo extends Component {
 
     businessDetailsHandler = (values) => {
-        this.props.setBusinessDetails(values,()=>{
+        let data ={
+            ...values
+        };
+        if(idx(this.props.businessDetails,_=>_.image)){
+            data={
+                ...values,
+                image:idx(this.props.businessDetails,_=>_.image)
+            }
+        }
+        this.props.setBusinessDetails(data,()=>{
             this.props.history.push(Routes.StepThree);
         });
     }

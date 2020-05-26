@@ -4,12 +4,23 @@ import Routes from 'config/Routes';
 import ImageUploader from 'react-images-upload';
 import {saveUserImage} from 'redux/actions/Steps';
 import { connect } from 'react-redux';
+import idx from 'idx';
 
 class StepThree extends Component {
 
     state={
         pictures: [],
         pictureBase64:[]
+    }
+
+    componentDidMount = async() =>{
+        if(idx(this.props.businessDetails,_=>_.image)){
+            let images = [];
+            images.push(idx(this.props.businessDetails,_=>_.image));
+            await  this.setState({
+                pictures:images
+            })
+        }
     }
 
     onDrop = (pictureFiles, pictureDataURLs)=> {
@@ -69,6 +80,7 @@ class StepThree extends Component {
 // export default StepThree;
 function mapStateToProps(state) {
     return {
+        businessDetails:state.steps.businessDetails
     };
 }
 

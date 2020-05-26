@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 class StepOne extends Component {
 
     handleForce = (data, fileInfo) => {
+        console.log(data);
         if(data){
             this.props.setBusinessDetails(data[0],()=>{
                 this.props.history.push(Routes.StepTwo);
