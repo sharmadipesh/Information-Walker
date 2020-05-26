@@ -4,7 +4,7 @@ import Routes from 'config/Routes';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import idx from 'idx';
-import {setBusinessDetails} from 'redux/actions/Steps';
+import {setBusinessDetails,googlePlaceFinder} from 'redux/actions/Steps';
 import * as Yup from 'yup';
 
 
@@ -28,6 +28,10 @@ class StepTwo extends Component {
         this.props.setBusinessDetails(values,()=>{
             this.props.history.push(Routes.StepThree);
         });
+    }
+
+    componentDidMount = () =>{
+        // this.props.googlePlaceFinder();
     }
 
     renderForm = ({
@@ -140,5 +144,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {setBusinessDetails}
+    {setBusinessDetails,googlePlaceFinder}
 )(StepTwo);
